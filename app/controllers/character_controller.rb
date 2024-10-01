@@ -1,5 +1,13 @@
 class CharacterController < ApplicationController
 
+  def show
+    @character = set_character
+  end
+
+  def index
+    @characters = current_user.Character.all
+  end
+
   def new
     @user = current_user
     @character = Character.new
@@ -15,6 +23,10 @@ class CharacterController < ApplicationController
   end
 
   private
+
+  def set_character
+    @character = Character.find(params[:character_id])
+  end
 
   def character_params
     params.require(:character).permit(:user_id, :name, :health, :hunger, :attack, :location)
