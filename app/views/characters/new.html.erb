@@ -1,0 +1,4 @@
+<%= simple_form_for(@character, user_id: current_user) do |f| %>
+  <%= f.input :name, label: 'Your characters name please', error: 'Name is mandatory, please specify one' %>
+  <%= f.button :submit %>
+<% end %>

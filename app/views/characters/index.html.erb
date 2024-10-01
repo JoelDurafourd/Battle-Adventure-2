@@ -1,4 +1,4 @@
-
+<%= link_to 'New Character', new_user_character_path(@user), class: "" %>
 <% if @characters %>
   <% @characters.each do |character| %>
     <%= character.name %>
