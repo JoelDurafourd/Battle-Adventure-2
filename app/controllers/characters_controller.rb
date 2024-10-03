@@ -15,8 +15,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    raise
-    @character = Character.new(user: current_user, name: params[:name], health: 100, hunger: 100, attack: 1, location: "starting")
+    @character = Character.new(user_id: @user, name: params[:name], health: 100, hunger: 100, attack: 1, location: "starting")
     raise
     if @character.save
       redirect_to user_characters_path(current_user), notice: 'Character was successfully created.'

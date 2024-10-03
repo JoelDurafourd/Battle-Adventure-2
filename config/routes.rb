@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :users, only: [:show, :index] do
-    resources :characters, only: [:new, :show, :index]
+    resources :characters, only: [:new, :create, :show, :index]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
