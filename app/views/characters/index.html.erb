@@ -1,6 +1,14 @@
 <%= link_to 'New Character', new_user_character_path(@user), class: "" %>
 <% if @characters %>
   <% @characters.each do |character| %>
-    <%= character.name %>
+    <div class="character-card">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="character-card-info">
+        <h2><%= character.name %></h2>
+        <p>health:<%= character.health %></p>
+        <p>hunger:<%= character.hunger %></p>
+        <p>attack:<%= character.attack %></p>
+      </div>
+    </div>
   <% end %>
 <% end %>
