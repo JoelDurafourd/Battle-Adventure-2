@@ -7,7 +7,9 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(user_id: current_user.id, name: params[:location][:name], health: 100, hunger: 100, attack: 1, location: "starting")
+    @user = current_user
+    @character = set_character
+    @location = Location.new(location_params)
     if @location.save
       redirect_to user_locations_path(current_user), notice: 'Location was successfully created.'
     else
@@ -19,5 +21,9 @@ class LocationsController < ApplicationController
 
   def set_character
     @character = Character.find(params[:character_id])
+  end
+
+  def location_params
+    params.require(:location).permit(:character_id, :name)
   end
 end
