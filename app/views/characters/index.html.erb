@@ -9,9 +9,11 @@
         <p>hunger:<%= character.hunger %></p>
         <p>attack:<%= character.attack %></p>
         <p>location:<%= character.location.name %></p>
+        <div>
+          <%= link_to 'Play', user_character_path(@user, character.id), class: "" %>
+        </div>
       </div>
       <div>
-      <button>play</button>
       </div>
     </div>
   <% end %>
