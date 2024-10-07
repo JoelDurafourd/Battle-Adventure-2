@@ -1,6 +1,8 @@
-<div class="character-show-info">
-        <h2><%= @character.name %></h2>
-        <p>health:<%= @character.health %></p>
-        <p>hunger:<%= @character.hunger %></p>
-        <p>attack:<%= @character.attack %></p>
+<div class="character-show-body" style="background: url(<%= asset_path("location_backgrounds/#{@character.location.name}.png") %>) no-repeat;">
+  <div class="character-show-info">
+          <h2><%= @character.name %></h2>
+          <p>health:<%= @character.health %></p>
+          <p>hunger:<%= @character.hunger %></p>
+          <p>attack:<%= @character.attack %></p>
+  </div>
 </div>
