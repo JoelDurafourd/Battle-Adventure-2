@@ -1,4 +1,10 @@
 <div class="character-show-body" style="background: url(<%= asset_path("location_backgrounds/#{@character.location.name}.png") %>) no-repeat;">
+<div class="character-actions">
+<button>travel to new location</button>
+<button>look for trouble</button>
+<button>search for valuables</button>
+<button>camp for the night</button>
+</div>
   <div class="character-show-info">
           <h2><%= @character.name %></h2>
           <p>health:<%= @character.health %></p>

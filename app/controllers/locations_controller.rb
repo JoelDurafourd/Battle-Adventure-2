@@ -17,6 +17,8 @@ class LocationsController < ApplicationController
     end
   end
 
+  def meadow_location
+
   private
 
   def set_character
