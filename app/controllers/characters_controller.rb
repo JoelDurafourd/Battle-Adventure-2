@@ -25,20 +25,12 @@ class CharactersController < ApplicationController
 
   def travel
     @character = set_character
-    new_location_params = location_params
-
-    if @character.travel_to(new_location_params)
-      redirect_to @character, notice: 'Successfully traveled to new location.'
-    else
-      redirect_to @character, alert: 'Failed to travel to new location.'
-    end
+    @character.location.destroy
+    @character.location = Location.create_meadow
+    redirect_to user_character_path(params[:user_id], params[:id])
   end
 
   private
-
-  def location_params
-    params.require(:location).permit(:name)
-  end
 
   private
 
