@@ -5,5 +5,8 @@ class Location < ApplicationRecord
     Location.create(name: "meadow")
   end
 
+  def self.create_woods
+    Location.create(name: "woods")
+  end
 
 end
