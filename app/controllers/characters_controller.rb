@@ -23,6 +23,24 @@ class CharactersController < ApplicationController
     end
   end
 
+  def travel
+    @character = Character.find(params[:id]) # Find the character
+    new_location_params = location_params # Strong parameters for location creation
+
+    if @character.travel_to(new_location_params)
+      redirect_to @character, notice: 'Successfully traveled to new location.'
+    else
+      redirect_to @character, alert: 'Failed to travel to new location.'
+    end
+  end
+
+  private
+
+  def location_params
+    # Adjust these parameters based on your Location model's attributes
+    params.require(:location).permit(:name, :description, :enemy_ids, :item_ids)
+  end
+
   private
 
   def set_character
