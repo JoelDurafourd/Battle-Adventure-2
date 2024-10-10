@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
   belongs_to :character
+  has_many :enemies
 
   def self.create_meadow
     Location.create(name: "meadow", description: "You arrive in a clear meadow, in the distance you see some trees, but everything around you is in sight.")
