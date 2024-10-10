@@ -2,6 +2,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = set_character
+    @location = @character.location
   end
 
   def index
@@ -15,7 +16,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = Character.new(user_id: current_user.id, name: params[:character][:name], health: 100, hunger: 100, attack: 1, location: Location.new(name: "starting"))
+    @character = Character.new(user_id: current_user.id, name: params[:character][:name], health: 100, hunger: 100, attack: 1, location: Location.new(name: "starting", description: "You wake up naked and afraid in a new land, with nothing to defend yourself but your fists"))
     if @character.save
       redirect_to user_characters_path(current_user), notice: 'Character was successfully created.'
     else
