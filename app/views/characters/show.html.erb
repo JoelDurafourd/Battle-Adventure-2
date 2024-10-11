@@ -12,4 +12,11 @@
           <p>hunger:<%= @character.hunger %></p>
           <p>attack:<%= @character.attack %></p>
   </div>
+    <div class="location-enemies">
+  <% if @location.enemies %>
+      <% @location.enemies do |enemy| %>
+      <p><%= enemy %></p>
+      <% end %>
+  <% end %>
+  </div>
 </div>

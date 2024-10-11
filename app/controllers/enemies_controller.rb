@@ -6,6 +6,7 @@ class EnemiesController < ApplicationController
 
   def create
     @enemy = Enemy.new(type: params[:enemy][:type], name: params[:enemy][:name], health: 100, hunger: 100, attack: 1, location: set_location)
+    @enemy.location = @location
     if @enemy.save
       redirect_to user_enemys_path(current_user), notice: 'Enemy was successfully created.'
     else
