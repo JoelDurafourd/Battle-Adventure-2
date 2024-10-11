@@ -13,10 +13,9 @@
           <p>attack:<%= @character.attack %></p>
   </div>
     <div class="location-enemies">
-  <% if @location.enemies %>
-      <% @location.enemies do |enemy| %>
-      <p><%= enemy %></p>
-      <% end %>
-  <% end %>
+    <p>enemies in the area:</p>
+<% @enemies.each do |enemy| %>
+  <p><%= enemy.name %></p>
+<% end %>
   </div>
 </div>

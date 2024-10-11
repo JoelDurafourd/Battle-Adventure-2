@@ -16,8 +16,8 @@ class Location < ApplicationRecord
     return woods
   end
 
-  def create_location_enemies
-    
+  def create_location_enemies(max_enemies, location_enemies)
+    (1..max_enemies)
   end
 
 end
