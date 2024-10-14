@@ -17,7 +17,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    starting_location = Location.create(name: "starting", description: "You wake up naked and afraid in a new land, with nothing to defend yourself but your fists")
+    starting_location = starting_location_generation
     @character = Character.new(user_id: current_user.id, name: params[:character][:name], health: 100, hunger: 100, attack: 1, location: starting_location)
     if @character.save
       Enemy.create_chicken(starting_location)
@@ -37,6 +37,10 @@ class CharactersController < ApplicationController
   def randommize_location
     possible_locations = [Location.create_meadow, Location.create_woods]
     return possible_locations.sample
+  end
+
+  def starting_location_generation
+    Location.create(name: "starting", description: "You wake up naked and afraid in a new land, with nothing to defend yourself but your fists")
   end
 
   private
