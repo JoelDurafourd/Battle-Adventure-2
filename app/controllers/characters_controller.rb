@@ -21,6 +21,7 @@ class CharactersController < ApplicationController
     @character = Character.new(user_id: current_user.id, name: params[:character][:name], health: 100, hunger: 100, attack: 1, location: starting_location)
     if @character.save
       Enemy.create_chicken(starting_location)
+      
       redirect_to user_characters_path(current_user), notice: 'Character was successfully created.'
     else
       render :new
