@@ -8,7 +8,9 @@
         <p>health:<%= character.health %></p>
         <p>hunger:<%= character.hunger %></p>
         <p>attack:<%= character.attack %></p>
+        <% if character.location %>
         <p>location:<%= character.location.name %></p>
+        <% end %>
         <div>
           <%= link_to 'Play', user_character_path(@user, character.id), class: "" %>
         </div>

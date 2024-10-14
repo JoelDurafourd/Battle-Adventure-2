@@ -2,6 +2,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = set_character
+    no_location_checker(@character)
     @location = @character.location
     @enemies = Enemy.where(location: @location.id)
   end
@@ -41,6 +42,12 @@ class CharactersController < ApplicationController
 
   def starting_location_generation
     Location.create(name: "starting", description: "You wake up naked and afraid in a new land, with nothing to defend yourself but your fists")
+  end
+
+  def no_location_checker(character)
+    starting_location = starting_location_generation if character.location.nil? || character.location == false
+    character.location = starting_location
+    Enemy.create_chicken(starting_location)
   end
 
   private
