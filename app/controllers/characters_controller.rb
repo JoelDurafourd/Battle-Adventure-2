@@ -2,7 +2,6 @@ class CharactersController < ApplicationController
 
   def show
     @character = set_character
-    no_location_checker(@character)
     @location = @character.location
     @enemies = Enemy.where(location: @location.id)
   end
@@ -31,23 +30,22 @@ class CharactersController < ApplicationController
   def travel
     @character = set_character
     @character.location.destroy
-    @character.location = randommize_location
+    @character.location = randommize_location(@character)
     redirect_to user_character_path(params[:user_id], params[:id])
   end
 
-  def randommize_location
-    possible_locations = [Location.create_meadow, Location.create_woods]
+  def randommize_location(character)
+    possible_locations = [Location.create_meadow(character), Location.create_woods(character)]
     return possible_locations.sample
   end
 
   def starting_location_generation
-    Location.create(name: "starting", description: "You wake up naked and afraid in a new land, with nothing to defend yourself but your fists")
+    Location.create(character_id: params[:character][:id], name: "starting", description: "You wake up naked and afraid in a new land, with nothing to defend yourself but your fists")
   end
 
   def no_location_checker(character)
-    starting_location = starting_location_generation if character.location.nil? || character.location == false
+    starting_location = starting_location_generation if character.location.nil?
     character.location = starting_location
-    Enemy.create_chicken(starting_location)
   end
 
   private

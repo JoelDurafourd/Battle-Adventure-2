@@ -27,8 +27,4 @@ class LocationsController < ApplicationController
   def set_character
     @character = Character.find(params[:character_id])
   end
-
-  def location_params
-    params.require(:location).permit(:character_id, :name, :description)
-  end
 end

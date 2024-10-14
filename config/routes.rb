@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :locations, only: [:new, :create, :destroy] do
-    resources :enemies, only: [:new, :create]
+    resources :enemies, only: [:new, :create, :update]
   end
   # resources :locations, only: [:new, :create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

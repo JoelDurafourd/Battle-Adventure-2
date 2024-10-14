@@ -1,4 +1,3 @@
-<% @character.location = starting_location_generation if @character.location == nil %>
 <div class="character-show-body" style="background: url(<%= asset_path("location_backgrounds/#{@character.location.name}.png") %>) no-repeat;">
 <div class="character-actions">
 <%= button_to 'Travel to a new location', travel_user_character_path(params[:user_id], params[:id]), method: :post, class: "" %>
