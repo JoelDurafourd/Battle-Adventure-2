@@ -30,13 +30,22 @@ class CharactersController < ApplicationController
   def travel
     @character = set_character
     @character.location.destroy
-    @character.location = randommize_location(@character)
+    @character.location = randomize_location(@character)
     redirect_to user_character_path(params[:user_id], params[:id])
   end
 
-  def randommize_location(character)
-    possible_locations = [Location.create_meadow(character), Location.create_woods(character)]
-    return possible_locations.sample
+  def randomize_location(character)
+    possible_locations = ["meadow", "woods"]
+    sampled_location = possible_locations.sample
+
+    case sampled_location
+    when "meadow"
+      Location.create_meadow(character)
+    when "woods"
+      Location.create_woods(character)
+    else
+      no_location_checker(character)
+    end
   end
 
   def starting_location_generation
