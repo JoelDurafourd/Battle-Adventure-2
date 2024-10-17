@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       member do
         post 'travel', to: 'characters#travel' # Travel action for characters
       end
-      resources :battles, only: [:create, :show] do
-      end 
+      resources :battles, only: [:new, :create, :show] do
+      end
     end
   end
 
