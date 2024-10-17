@@ -1,7 +1,7 @@
 <div class="character-show-body" style="background: url(<%= asset_path("location_backgrounds/#{@character.location.name}.png") %>) no-repeat;">
 <div class="character-actions">
 <%= button_to 'Travel to a new location', travel_user_character_path(params[:user_id], params[:id]), method: :post, class: "" %>
-<%= button_to 'Look for trouble', new_user_character_battle_path(params[:user_id], params[:id]), class: "" %>
+<%= link_to 'Look for trouble', new_user_character_battle_path(params[:user_id], params[:id]), class: "" %>
 <button>search for valuables</button>
 <button>camp for the night</button>
 </div>
