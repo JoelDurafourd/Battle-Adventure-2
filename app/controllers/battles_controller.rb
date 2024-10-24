@@ -3,7 +3,7 @@ class BattlesController < ApplicationController
   def new
     @user = current_user
     @character = set_character
-    @location = @character.location
+    @location = set_location
   end
 
   def create
@@ -17,9 +17,21 @@ class BattlesController < ApplicationController
     end
   end
 
+  def fight
+    @user = current_user
+    @character = set_character
+    @location = set_location
+    Battle.create(character_id: @character.id, enemy_id: @location.enemies.sample)
+  end
+
   private
 
   def set_character
     @character = Character.find(params[:character_id])
+  end
+
+  def set_location
+    @character = set_character
+    @location = @character.location
   end
 end

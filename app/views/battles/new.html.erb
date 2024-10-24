@@ -5,6 +5,8 @@
   <% @location.enemies.each do |enemy| %>
   <p><%= enemy.name %></p>
   <% end %>
+  <p>Do you still wish you fight?</p>
+<%= button_to 'Fight something!', travel_user_character_path(params[:user_id], params[:id]), method: :post, class: "" %>
   <% else %>
   <p>There are no enemies present, travel to a new location to find trouble</p>
 <% end %>
