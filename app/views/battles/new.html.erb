@@ -1,1 +1,10 @@
-You have found a battle, shall you fight? 
+
+
+<% if @location.enemies %>
+  <p>Beware, the following enemies remain in <%= @location.name %>!</p>
+  <% @location.enemies.each do |enemy| %>
+  <p><%= enemy.name %></p>
+  <% end %>
+  <% else %>
+  <p>There are no enemies present, travel to a new location to find trouble</p>
+<% end %>

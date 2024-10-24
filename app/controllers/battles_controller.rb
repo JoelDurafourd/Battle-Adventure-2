@@ -3,6 +3,7 @@ class BattlesController < ApplicationController
   def new
     @user = current_user
     @character = set_character
+    @location = @character.location
   end
 
   def create
