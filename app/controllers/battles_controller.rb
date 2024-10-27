@@ -21,7 +21,15 @@ class BattlesController < ApplicationController
     @user = current_user
     @character = set_character
     @location = set_location
-    Battle.create(character_id: @character.id, enemy_id: @location.enemies.sample)
+    @enemy = @location.enemies.sample
+    @battle = Battle.new(character_id: @character.id, enemy_id: @enemy.id)
+    if @battle.save
+      redirect_to user_character_battle_path(params[:user_id], @character.id, @battle.id), notice: 'Battle was successfully created.'
+    else
+      # Handle the error, e.g., render a message or redirect somewhere else
+      flash[:alert] = 'Error creating battle.'
+      render :new # or redirect_to some other path
+    end
   end
 
   private
