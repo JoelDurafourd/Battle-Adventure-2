@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     resources :characters, only: [:new, :create, :show, :index] do
       member do
-        post 'travel', to: 'characters#travel' # Travel action for characters
+        post 'travel', to: 'characters#travel' 
       end
       resources :battles, only: [:new, :create, :show] do
         member do
-          post 'fight', to: 'battles#fight' # Travel action for characters
+          post 'fight', to: 'battles#fight'
         end
       end
     end
