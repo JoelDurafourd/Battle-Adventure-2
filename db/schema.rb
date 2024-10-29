@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_16_083132) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_29_061758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_083132) do
     t.bigint "enemy_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "finished"
     t.index ["character_id"], name: "index_battles_on_character_id"
     t.index ["enemy_id"], name: "index_battles_on_enemy_id"
   end
