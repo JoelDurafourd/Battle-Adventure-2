@@ -9,6 +9,7 @@ class BattlesController < ApplicationController
     @user = current_user
     @character = set_character
     @battle = Battle.find(params[:id])
+    @enemy = @battle.enemy
   end
 
   def create

@@ -1,1 +1,16 @@
-Sup girl
+<p><%= @character.name %> is going to fight <%= @enemy.name %></p>
+      <div class="character-card-info">
+        <h2> <%= @character.name %> </h2>
+        <p>health: <%= @character.health %> </p>
+        <p>hunger: <%= @character.hunger %> </p>
+        <p>attack: <%= @character.attack %> </p>
+        <% if @character.location %>
+        <p>location: <%= @character.location.name %> </p>
+        <% end %>
+      </div>
+
+            <div class="enemy-card-info">
+        <h2><%= @enemy.name %> </h2>
+        <p>health: <%= @enemy.health %> </p>
+        <p>attack: <%= @enemy.attack %> </p>
+      </div>
