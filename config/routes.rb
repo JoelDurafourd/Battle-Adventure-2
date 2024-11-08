@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :users, only: [:show, :index] do
-    resources :characters, only: [:new, :create, :show, :index] do
+    resources :characters, only: [:new, :create, :show, :index, :update] do
       member do
-        post 'travel', to: 'characters#travel' 
+        post 'travel', to: 'characters#travel'
       end
       resources :battles, only: [:new, :create, :show] do
         member do
           post 'fight', to: 'battles#fight'
+          post 'attack_enemy', to: 'battles#attack_enemy'
         end
       end
     end

@@ -16,7 +16,7 @@
       </div>
 
 <p>what will you do?</p>
-<%= button_to 'Attack', fight_user_character_battle_path(params[:user_id], params[:id]), method: :post, class: "" %>
+<%= button_to 'Attack', attack_enemy_user_character_battle_path(params[:user_id], params[:character_id]), method: :post, class: "" %>
 <%= button_to 'block', fight_user_character_battle_path(params[:user_id], params[:id]), method: :post, class: "" %>
 <%= button_to 'item', fight_user_character_battle_path(params[:user_id], params[:id]), method: :post, class: "" %>
 <%= button_to 'run', fight_user_character_battle_path(params[:user_id], params[:id]), method: :post, class: "" %>

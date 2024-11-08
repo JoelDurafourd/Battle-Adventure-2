@@ -12,6 +12,24 @@ class BattlesController < ApplicationController
     @enemy = @battle.enemy
   end
 
+  def attack_enemy
+    @user = current_user
+    @character = set_character
+    @battle = Battle.find(params[:id])
+    @enemy = @battle.enemy
+    if [true, true, true, true, false].sample == true
+      new_enemy_health = @enemy.health - @character.attack
+      @enemy.health = new_enemy_health
+      @enemy.save
+    end
+    if [true, true, true, true, false].sample == true
+      new_character_health = @character.health - @enemy.attack
+      @character.health = new_character_health
+      @character.save
+    end
+    redirect_to user_character_battle_path(@user.id, @character.id, @battle.id), notice: 'Battle was successfully created.'
+  end
+
   def create
     @user = current_user
     @character = set_character
