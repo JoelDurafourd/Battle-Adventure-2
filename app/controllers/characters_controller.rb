@@ -4,6 +4,8 @@ class CharactersController < ApplicationController
     @character = set_character
     @location = @character.location
     @enemies = Enemy.where(location: @location.id)
+    @battles_exist = Battle.where(character_id: @character.id)
+    @user = current_user
   end
 
   def index
