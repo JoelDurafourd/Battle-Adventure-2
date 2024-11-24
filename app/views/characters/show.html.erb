@@ -1,18 +1,17 @@
 <div class="character-show-body" style="background: url(<%= asset_path("location_backgrounds/#{@character.location.name}.png") %>) no-repeat;">
 <div class="character-actions">
-<%= button_to 'Travel to a new location', travel_user_character_path(params[:user_id], params[:id]), method: :post, class: "" %>
 
 <% if @battles_exist %>
     <% @battles_exist.each do |battle| %>
     <p>  <%= link_to 'continue battle', user_character_battle_path(@user.id, @character.id, battle.id), class: "" %></p>
     <% end %>
   <% else %>
+  <%= button_to 'Travel to a new location', travel_user_character_path(params[:user_id], params[:id]), method: :post, class: "" %>
   <%= button_to 'Look for trouble', fight_user_character_battle_path(params[:user_id], params[:id]), method: :post, class: "" %>
+  <button>search for valuables</button>
+  <button>camp for the night</button>
 <% end %>
 
-
-<button>search for valuables</button>
-<button>camp for the night</button>
 </div>
   <div class="character-show-info">
           <h3><%= @location.description %></h3>
